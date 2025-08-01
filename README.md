@@ -1,6 +1,6 @@
 # favorite_places
 
-A new Flutter project.
+A Flutter app project for favorite places in Map.
 
 ## Getting Started
 
