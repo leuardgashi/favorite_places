@@ -37,7 +37,7 @@ class _LocationInputState extends State<LocationInput> {
     final lat = _pickedLocation!.latitude;
     final lng = _pickedLocation!.longitude;
     const locationIQKey =
-        'pk.45a34c58f78b9d49ab89c9bcf9dd3cf1'; // get from locationiq.com
+        'pk.APIKEY'; // get from locationiq.com
     return 'https://maps.locationiq.com/v3/staticmap?key=$locationIQKey&center=$lat,$lng&zoom=16&size=600x300&markers=icon:large-red-cutout|$lat,$lng';
   }
 
