@@ -23,22 +23,39 @@ class _LocationInputState extends State<LocationInput> {
   PlaceLocation? _pickedLocation;
   var _isGettingLocation = false;
 
+  // String get locationImage {
+  //   if (_pickedLocation == null) {
+  //     return '';
+  //   }
+  //   final lat = _pickedLocation!.latitude;
+  //   final lng = _pickedLocation!.longitude;
+  //   return 'https://maps.googleapis.com/maps/api/staticmap?center=$lat,$lng=&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7Clabel:A%7C$lat,$lng&key=APIKEY';
+  // }
+
   String get locationImage {
-    if (_pickedLocation == null) {
-      return '';
-    }
+    if (_pickedLocation == null) return '';
     final lat = _pickedLocation!.latitude;
     final lng = _pickedLocation!.longitude;
-    return 'https://maps.googleapis.com/maps/api/staticmap?center=$lat,$lng=&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7Clabel:A%7C$lat,$lng&key=APIKEY';
+    const locationIQKey =
+        'pk.45a34c58f78b9d49ab89c9bcf9dd3cf1'; // get from locationiq.com
+    return 'https://maps.locationiq.com/v3/staticmap?key=$locationIQKey&center=$lat,$lng&zoom=16&size=600x300&markers=icon:large-red-cutout|$lat,$lng';
   }
 
   Future<void> _savePlace(double latitude, double longitude) async {
+    // final url = Uri.parse(
+    //   'https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&key=APIKEY',
+    // );
+    // final response = await http.get(url);
+    // final resData = json.decode(response.body);
+    // final address = resData['results'][0]['formatted_address'];
+
+    const locationIQKey = 'pk.APIKEY';
     final url = Uri.parse(
-      'https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&key=APIKEY',
+      'https://us1.locationiq.com/v1/reverse?key=$locationIQKey&lat=$latitude&lon=$longitude&format=json',
     );
     final response = await http.get(url);
     final resData = json.decode(response.body);
-    final address = resData['results'][0]['formatted_address'];
+    final address = resData['display_name'];
 
     setState(() {
       _pickedLocation = PlaceLocation(

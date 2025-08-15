@@ -8,10 +8,17 @@ class PlaceDetailScreen extends StatelessWidget {
 
   final Place place;
 
+  // String get locationImage {
+  //   final lat = place.location.latitude;
+  //   final lng = place.location.longitude;
+  //   return 'https://maps.googleapis.com/maps/api/staticmap?center=$lat,$lng=&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7Clabel:A%7C$lat,$lng&key=APIKEY';
+  // }
+
   String get locationImage {
     final lat = place.location.latitude;
     final lng = place.location.longitude;
-    return 'https://maps.googleapis.com/maps/api/staticmap?center=$lat,$lng=&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7Clabel:A%7C$lat,$lng&key=APIKEY';
+    const locationIQKey = 'pk.APIKEY';
+    return 'https://maps.locationiq.com/v3/staticmap?key=$locationIQKey&center=$lat,$lng&zoom=16&size=600x300&markers=icon:large-red-cutout|$lat,$lng';
   }
 
   @override
