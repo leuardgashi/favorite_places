@@ -17,7 +17,7 @@ class PlaceDetailScreen extends StatelessWidget {
   String get locationImage {
     final lat = place.location.latitude;
     final lng = place.location.longitude;
-    const locationIQKey = 'pk.APIKEY';
+    const locationIQKey = 'pk.API_KEY';
     return 'https://maps.locationiq.com/v3/staticmap?key=$locationIQKey&center=$lat,$lng&zoom=16&size=600x300&markers=icon:large-red-cutout|$lat,$lng';
   }
 

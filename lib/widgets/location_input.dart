@@ -36,8 +36,7 @@ class _LocationInputState extends State<LocationInput> {
     if (_pickedLocation == null) return '';
     final lat = _pickedLocation!.latitude;
     final lng = _pickedLocation!.longitude;
-    const locationIQKey =
-        'pk.45a34c58f78b9d49ab89c9bcf9dd3cf1'; // get from locationiq.com
+    const locationIQKey = 'pk.API_KEY'; // get from locationiq.com
     return 'https://maps.locationiq.com/v3/staticmap?key=$locationIQKey&center=$lat,$lng&zoom=16&size=600x300&markers=icon:large-red-cutout|$lat,$lng';
   }
 
@@ -49,7 +48,7 @@ class _LocationInputState extends State<LocationInput> {
     // final resData = json.decode(response.body);
     // final address = resData['results'][0]['formatted_address'];
 
-    const locationIQKey = 'pk.APIKEY';
+    const locationIQKey = 'pk.API_KEY';
     final url = Uri.parse(
       'https://us1.locationiq.com/v1/reverse?key=$locationIQKey&lat=$latitude&lon=$longitude&format=json',
     );
